@@ -1,5 +1,9 @@
 # dsh-skill-writing-plans
 
+[![npm version](https://img.shields.io/npm/v/dsh-skill-writing-plans?color=blue)](https://www.npmjs.com/package/dsh-skill-writing-plans)
+[![npm downloads](https://img.shields.io/npm/dm/dsh-skill-writing-plans)](https://www.npmjs.com/package/dsh-skill-writing-plans)
+[![license](https://img.shields.io/npm/l/dsh-skill-writing-plans)](LICENSE)
+
 **给 DeepSeek Harness 加上「先写计划，再动手」的习惯。**
 
 装上这个插件，Agent 在接到任何写代码、做页面、跑实验的请求时，会先产出一份结构化的实现计划，再开始动手——而不是直接埋头写代码。
@@ -22,13 +26,31 @@
 
 ## 安装
 
-### 从插件市场安装（推荐）
+### 从 npm 安装（推荐）
+
+[![npm](https://img.shields.io/npm/v/dsh-skill-writing-plans)](https://www.npmjs.com/package/dsh-skill-writing-plans)
+
+```bash
+npm install dsh-skill-writing-plans
+```
+
+或在 DSH 里直接装：
+
+```bash
+dsh plugin add dsh-skill-writing-plans@0.1.0
+```
+
+> **DSH 桌面客户端用户请用这一种。** 桌面客户端的安装边界只接受已发布到 npm 的包，纯 GitHub 源的插件在桌面端装不了。
+
+### 从插件市场安装
 
 1. 打开 DeepSeek Harness → 插件市场
-2. 搜索 `writing-plans`
+2. 搜索 `writing-plans` 或 `dsh-skill-writing-plans`
 3. 点击安装，按提示重启 DSH
 
-### 从 GitHub 安装
+市场条目收录后即可搜到；收录前请用上面的 npm 方式。
+
+### 从 GitHub 源码安装（仅普通 dsh web / CLI）
 
 ```bash
 git clone https://github.com/linlin539/dsh-skill-writing-plans.git
@@ -165,6 +187,14 @@ Expected: 页面正中央显示 `Hello World`
 
 这是正常的。本插件只往 Host 侧注册技能，不带任何界面组件，所以不会出现在主插件列表里。可以在插件市场的已安装列表中确认，或查看 DSH 日志。
 
+**DSH 桌面客户端从 GitHub 源装不了？**
+
+桌面客户端的安装边界只接受已发布到 npm 的、带精确版本号的包（`name@x.y.z`），纯 GitHub 源会被拒绝。请改用 npm 安装方式：
+
+```bash
+dsh plugin add dsh-skill-writing-plans@0.1.0
+```
+
 **计划文档还是又长又啰嗦？**
 
 请确认你看的是新生成的文件。工作区里早先版本留下的旧计划不会被自动删除。
@@ -176,6 +206,18 @@ Expected: 页面正中央显示 `Hello World`
 **能关掉它吗？**
 
 可以，在插件市场里禁用或卸载即可。也可以只在个别会话里不使用——它不会强制接管所有请求。
+
+**怎么更新到新版本？**
+
+```bash
+npm install dsh-skill-writing-plans@latest
+```
+
+或查看当前版本：
+
+```bash
+npm view dsh-skill-writing-plans version
+```
 
 ---
 

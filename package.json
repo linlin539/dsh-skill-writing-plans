@@ -1,6 +1,6 @@
 {
   "name": "dsh-skill-writing-plans",
-  "description": "DeepSeek Harness skill plugin that adds the 'writing-plans' skill: structured implementation plans with bite-sized tasks, exact paths, and no placeholders.",
+  "description": "DeepSeek Harness skill plugin that adds the 'writing-plans' skill: generates a structured implementation plan document before coding, then executes simple tasks inline or offers an execution choice for complex work.",
   "version": "0.1.0",
   "author": "linlin539",
   "license": "MIT",

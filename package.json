@@ -42,6 +42,7 @@
     "lib/index.js",
     "assets",
     "cordis.patch.yml",
-    "README.md"
+    "README.md",
+    "LICENSE"
   ]
 }

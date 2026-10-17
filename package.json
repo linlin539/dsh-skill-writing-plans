@@ -1,0 +1,40 @@
+{
+  "name": "dsh-skill-writing-plans",
+  "description": "DeepSeek Harness skill plugin that adds the 'writing-plans' skill: structured implementation plans with bite-sized tasks, exact paths, and no placeholders.",
+  "version": "0.1.0",
+  "author": "linlin539",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/linlin539/dsh-skill-writing-plans.git"
+  },
+  "bugs": {
+    "url": "https://github.com/linlin539/dsh-skill-writing-plans/issues"
+  },
+  "homepage": "https://github.com/linlin539/dsh-skill-writing-plans#readme",
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "cordis",
+    "skill",
+    "writing-plans",
+    "trae",
+    "plugin"
+  ],
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/index.js",
+    "assets",
+    "README.md"
+  ]
+}

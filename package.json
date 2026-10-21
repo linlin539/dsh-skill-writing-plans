@@ -1,7 +1,7 @@
 {
   "name": "dsh-skill-writing-plans",
-  "description": "DeepSeek Harness skill plugin that adds the 'writing-plans' skill: generates a structured implementation plan document before coding, then executes simple tasks inline or offers an execution choice for complex work.",
-  "version": "0.1.5",
+  "description": "DeepSeek Harness skill plugin that adds the 'plan-first' skill: writes a structured implementation plan before coding, executes simple tasks inline, and offers an execution choice for complex work. The skill is named plan-first rather than writing-plans so it can coexist with the writing-plans skill that dsh-connect-trae exposes from a Trae skills directory.",
+  "version": "0.2.0",
   "author": "linlin539",
   "license": "MIT",
   "publishConfig": {
@@ -20,6 +20,7 @@
     "deepseek-harness",
     "cordis",
     "skill",
+    "plan-first",
     "writing-plans",
     "trae",
     "plugin"

@@ -37,7 +37,7 @@ npm install dsh-skill-writing-plans
 或在 DSH 里直接装：
 
 ```bash
-dsh plugin add dsh-skill-writing-plans@0.1.2
+dsh plugin add dsh-skill-writing-plans@0.1.3
 ```
 
 > **DSH 桌面客户端用户请用这一种。** 桌面客户端的安装边界只接受已发布到 npm 的包，纯 GitHub 源的插件在桌面端装不了。
@@ -192,7 +192,7 @@ Expected: 页面正中央显示 `Hello World`
 桌面客户端的安装边界只接受已发布到 npm 的、带精确版本号的包（`name@x.y.z`），纯 GitHub 源会被拒绝。请改用 npm 安装方式：
 
 ```bash
-dsh plugin add dsh-skill-writing-plans@0.1.2
+dsh plugin add dsh-skill-writing-plans@0.1.3
 ```
 
 **计划文档还是又长又啰嗦？**

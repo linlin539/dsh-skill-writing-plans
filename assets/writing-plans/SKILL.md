@@ -13,11 +13,16 @@ user-invocable: true
 你是 planning + execution 工程师。默认流程：
 
 1. 快速查看当前工作区（目录、已有文件、关键依赖）。
-2. 写计划文档：`docs/superpowers/plans/YYYY-MM-DD-<feature-name>.md`。
+2. 确认今天日期（`Get-Date` / `date`），写计划文档：`docs/superpowers/plans/<今天日期>-<feature-name>.md`。
 3. 按 plan 创建/修改文件、跑测试。
 4. 简单任务直接执行，复杂任务给出执行选择。
 
 不要问用户"要不要先出计划"，直接出。
+
+**两条硬性规则（详见第四、五节）：**
+
+- **语言跟随用户**：用户说中文，整份计划文档用中文；用户说英文，用英文。只保留代码、路径、命令、API 名不翻译。
+- **日期取真实当天**：文件名里的日期用今天实际日期，不写 `2025-01-XX` 这类占位符。
 
 ## 一、开始前的快速调查
 
@@ -37,16 +42,34 @@ user-invocable: true
 docs/superpowers/plans/YYYY-MM-DD-<feature-name>.md
 ```
 
-头部（固定）：
+**日期必须是今天**：`YYYY-MM-DD` 一律替换为**生成计划当天的真实日期**，从系统时间或 `date` / `Get-Date` 命令取，不要凭记忆写，更不要留 `XXXX`、`XX`、`2025-01-XX` 这类占位符。文件名里的 `<feature-name>` 用英文短横线小写（如 `fix-vm-switch`）。
+
+**语言必须跟随用户**：用户用中文提问，整份文档（标题、Goal、Architecture、Tech Stack、任务名、步骤说明、预期结果）**全部用中文**；用户用英文，全部用英文。只有**代码块内的代码、文件路径、命令、API 名**保持原样不翻译。
+
+头部（固定结构，标题语言随用户）：
+
+```markdown
+# [功能名] 实现计划
+
+**目标：** [一句话说明要做什么]
+
+**架构：** [2-3 句话说明实现思路]
+
+**技术栈：** [关键技术/库]
+
+---
+```
+
+用户使用英文时，对应写成：
 
 ```markdown
 # [Feature Name] Implementation Plan
 
-**Goal:** [一句话说明要做什么]
+**Goal:** [...]
 
-**Architecture:** [2-3 句话说明实现思路]
+**Architecture:** [...]
 
-**Tech Stack:** [关键技术/库]
+**Tech Stack:** [...]
 
 ---
 ```
@@ -60,41 +83,41 @@ project/
 └── scripts/run.sh      # 一键运行
 ```
 
-任务结构：
+任务结构（示例为中文用户场景；英文用户把 `任务`/`步骤`/`文件`/`预期` 换成 `Task`/`Step`/`Files`/`Expected`）：
 
 ```markdown
-### Task N: [任务名]
+### 任务 1: [任务名]
 
-**Files:**
-- Create: `src/xxx.py`
-- Modify: `src/yyy.py:10-20`
-- Test: `tests/test_xxx.py`
+**文件：**
+- 新建：`src/xxx.py`
+- 修改：`src/yyy.py:10-20`
+- 测试：`tests/test_xxx.py`
 
-- [ ] **Step 1: 写失败测试**
+- [ ] **步骤 1: 写失败测试**
 
 ```python
 def test_xxx():
     assert func(input) == expected
 ```
 
-- [ ] **Step 2: 运行测试，确认失败**
+- [ ] **步骤 2: 运行测试，确认失败**
 
-Run: `pytest tests/test_xxx.py -v`
-Expected: FAIL
+运行：`pytest tests/test_xxx.py -v`
+预期：FAIL
 
-- [ ] **Step 3: 写最小实现**
+- [ ] **步骤 3: 写最小实现**
 
 ```python
 def func(input):
     return expected
 ```
 
-- [ ] **Step 4: 运行测试，确认通过**
+- [ ] **步骤 4: 运行测试，确认通过**
 
-Run: `pytest tests/test_xxx.py -v`
-Expected: PASS
+运行：`pytest tests/test_xxx.py -v`
+预期：PASS
 
-- [ ] **Step 5: 提交**
+- [ ] **步骤 5: 提交**
 
 ```bash
 git add tests/test_xxx.py src/xxx.py
@@ -128,16 +151,32 @@ git commit -m "feat: xxx"
 - 精确文件路径。
 - 代码步骤给出完整代码。
 - 命令步骤给出具体命令和预期输出。
-- 禁止 placeholder："TBD"、"TODO"、"稍后实现"、"添加适当错误处理"、"类似 Task N"。
+- 禁止 placeholder：`TBD`、`TODO`、`稍后实现`、`添加适当错误处理`、`类似 Task N`，以及文件名里的 `2025-01-XX`、`YYYY-MM-DD`、`<feature-name>` 等未替换的占位符。
 - 遵循 DRY、YAGNI、TDD、小步提交。
 - 非 git 仓库跳过提交步骤。
-- 使用用户语言（中文优先）。
+
+### 4.1 语言跟随用户（硬性规则）
+
+整份文档的**叙述语言**必须与用户提问的语言一致：
+
+- 用户说中文 → 标题、`目标`、`架构`、`技术栈`、`任务 N`、`步骤 N`、`文件`、`运行`、`预期`、Self-Review 全部中文。
+- 用户说英文 → 全部英文。
+- 用户中英混用 → 以中文为主。
+
+**不翻译**的部分只有：代码、文件路径、命令、API/类/函数名、第三方库名、UI 文案原文。
+
+不要把英文模板标题（如 `Implementation Plan`、`Goal`、`Step`）留在中文用户的计划里。
+
+### 4.2 日期必须真实
+
+文件名里的日期取**当天真实日期**，通过系统时间确认（如 `Get-Date` / `date`），不要写 `2025-01-XX` 这类占位。
 
 ## 五、Self-Review（简短）
 
 计划写完后快速检查：
 1. 每个需求都有对应任务。
-2. 无 placeholder。
+2. 无 placeholder（含未替换的日期/功能名占位符）。
 3. 函数名、路径、类型前后一致。
+4. 叙述语言与用户提问语言一致。
 
 Self-Review 控制在 3–5 行内，不要展开成长段落。
